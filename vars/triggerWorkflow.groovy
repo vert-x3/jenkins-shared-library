@@ -3,15 +3,34 @@ import groovy.transform.Field
 @Field
 Map<String, List<String>> dependencyGraph = [
     "3.5": [
-        "vertx-codegen"      : [],
-        "vertx-core"         : [ "vertx-codegen" ],
-        "vertx-unit"         : ["vertx-core"],
-        "vertx-sql-common"   : ["vertx-core"],
-        "vertx-jdbc-client"  : ["vertx-sql-common"],
-        "vertx-auth"         : ["vertx-core", "vertx-jdbc-client", "vertx-mongo-client"],
-        "vertx-mongo-client" : ["vertx-core"],
-        "vertx-bridge-common": ["vertx-core"],
-        "vertx-web"          : ["vertx-core", "vertx-auth", "vertx-bridge-common", "vertx-unit"],
+        "vertx-codegen"               : [],
+        "vertx-core"                  : ["vertx-codegen"],
+
+        // Rx
+        "vertx-rx"   : ["vertx-core"],
+
+        // Langs
+        "vertx-lang-groovy"           : ["vertx-core"],
+        "vertx-lang-js"               : ["vertx-core"],
+        "vertx-lang-ruby"             : ["vertx-core"],
+        "vertx-lang-kotlin"           : ["vertx-core", "vertx-rx"],
+
+        // Service
+        "vertx-service-factory"       : ["vertx-core"],
+        "vertx-maven-service-factory" : ["vertx-service-factory"],
+        "vertx-http-service-factory"  : ["vertx-service-factory"],
+
+        // Utils
+        "vertx-embedded-mongo-db"     : ["vertx-service-factory"],
+
+        // Polyglot components
+        "vertx-unit"                  : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-sql-common"            : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-bridge-common"         : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-mongo-client"          : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-jdbc-client"           : ["vertx-sql-common"],
+        "vertx-auth"                  : ["vertx-jdbc-client", "vertx-mongo-client"],
+        "vertx-web"                   : ["vertx-auth", "vertx-bridge-common", "vertx-unit"],
     ],
     "master": [
         "vertx-codegen"      : [],
@@ -55,7 +74,7 @@ def topologicalSort(String version, String id) {
 
 // For testing purpose in IDE
 def test() {
-    def closure = topologicalSort("vertx-codegen")
+    def closure = topologicalSort("3.5", "vertx-codegen")
     println closure
 }
 
