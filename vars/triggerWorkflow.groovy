@@ -49,7 +49,8 @@ Map<String, List<String>> dependencyGraph = [
 
         // Microservices
         "vertx-circuit-breaker"       : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
-        "vertx-health-check"          : ["vertx-web", "vertx-auth", "vertx-unit"],
+        "vertx-service-discovery"     : ["vertx-hazelcast", "vertx-web", "vertx-jdbc-client", "vertx-redis-client", "vertx-mongo-client", "vertx-consul-client"],
+        "vertx-health-check"          : ["vertx-web", "vertx-auth", "vertx-service-discovery", "vertx-unit"],
 
         // Web
         "vertx-web"                   : ["vertx-auth", "vertx-bridge-common", "vertx-unit"],
