@@ -28,6 +28,9 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-unit"                  : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-junit5"                : ["vertx-core"],
 
+        // Legacy
+        "vertx-jca"                   : ["vertx-core"],
+
         // Clustering
         "vertx-hazelcast"             : ["vertx-core", "vertx-web"],
         "vertx-infinispan"            : ["vertx-core", "vertx-web"],
@@ -39,6 +42,9 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-amqp-bridge"           : ["vertx-proton"],
         "vertx-stomp"                 : ["vertx-unit"],
         "vertx-camel-bridge"          : ["vertx-unit", "vertx-stomp"],
+        "vertx-kafka-client"          : ["vertx-unit"],
+        "vertx-mqtt"                  : ["vertx-unit"],
+        "vertx-rabbitmq-client"       : ["vertx-unit"],
 
         // Data
         "vertx-embedded-mongo-db"     : ["vertx-service-factory"],
@@ -48,6 +54,9 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-redis-client"          : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-jdbc-client"           : ["vertx-sql-common"],
         "vertx-consul-client"         : ["vertx-unit", "vertx-web"],
+
+        // Mail
+        "vertx-mail-client"           : ["vertx-unit"],
 
         // Security
         "vertx-auth"                  : ["vertx-jdbc-client", "vertx-mongo-client"],
@@ -108,10 +117,12 @@ def topologicalSort(String version, String id) {
     return result
 }
 
-// For testing purpose in IDE
+// For testing purpose - check we don't have cycle
 def test() {
-    def closure = topologicalSort("3.5", "vertx-codegen")
-    println closure
+    def t = dependencyGraph["3.5"]
+    for (entry in t) {
+        def closure = topologicalSort("3.5", entry.key)
+    }
 }
 
 test()
