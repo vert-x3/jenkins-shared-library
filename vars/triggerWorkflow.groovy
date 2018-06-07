@@ -26,7 +26,8 @@ Map<String, List<String>> dependencyGraph = [
         // Messaging
         "vertx-proton"                : ["vertx-unit"],
         "vertx-amqp-bridge"           : ["vertx-proton"],
-        "vertx-camel-bridge"          : ["vertx-unit"],
+        "vertx-stomp"                 : ["vertx-unit"],
+        "vertx-camel-bridge"          : ["vertx-unit", "vertx-stomp"],
 
         // Data
         "vertx-embedded-mongo-db"     : ["vertx-service-factory"],
