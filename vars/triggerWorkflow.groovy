@@ -105,7 +105,7 @@ def topologicalSort(String version, String id) {
 
 // For testing purpose in IDE
 def test() {
-    def closure = topologicalSort("3.5", "vertx-codegen")
+    def closure = topologicalSort("3.5", "vertx-service-proxy")
     println closure
 }
 
@@ -119,8 +119,15 @@ def call() {
         echo "Triggered by job list [$jobList]"
         if (jobList.length() > 0) {
             int idx = jobList.indexOf(',')
-            def nextJob = idx == - 1 ? jobList : jobList.substring(0, idx)
-            def nextJobList = jobList.substring(idx + 1)
+            def nextJob
+            def nextJobList
+            if (idx == -1) {
+                nextJob = jobList
+                nextJobList = ""
+            } else {
+                nextJob = jobList.substring(0, idx)
+                nextJobList = jobList.substring(idx + 1)
+            }
             build job: nextJob, wait: false, parameters: [[$class: 'StringParameterValue', name: 'jobList', value: nextJobList]]
         }
     } else {
