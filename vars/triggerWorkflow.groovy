@@ -19,7 +19,10 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-service-factory"       : ["vertx-core"],
         "vertx-maven-service-factory" : ["vertx-service-factory"],
         "vertx-http-service-factory"  : ["vertx-service-factory"],
+
+        //
         "vertx-service-proxy"         : ["vertx-core", "vertx-auth"],
+        "vertx-grpc"                  : ["vertx-core"],
 
         // Vert.x Unit
         "vertx-unit"                  : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
@@ -52,6 +55,7 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-circuit-breaker"       : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-service-discovery"     : ["vertx-hazelcast", "vertx-web", "vertx-jdbc-client", "vertx-redis-client", "vertx-mongo-client", "vertx-consul-client", "vertx-service-proxy"],
         "vertx-health-check"          : ["vertx-web", "vertx-auth", "vertx-service-discovery", "vertx-unit"],
+        "vertx-config"                : ["vertx-web", "vertx-redis-client", "vertx-consul-client"],
 
         // Web
         "vertx-web"                   : ["vertx-auth", "vertx-bridge-common", "vertx-unit"],
@@ -105,7 +109,7 @@ def topologicalSort(String version, String id) {
 
 // For testing purpose in IDE
 def test() {
-    def closure = topologicalSort("3.5", "vertx-service-proxy")
+    def closure = topologicalSort("3.5", "vertx-codegen")
     println closure
 }
 
