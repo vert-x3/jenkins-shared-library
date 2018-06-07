@@ -20,17 +20,33 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-maven-service-factory" : ["vertx-service-factory"],
         "vertx-http-service-factory"  : ["vertx-service-factory"],
 
-        // Utils
-        "vertx-embedded-mongo-db"     : ["vertx-service-factory"],
-
-        // Polyglot components
+        // Vert.x Unit
         "vertx-unit"                  : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+
+        // Messaging
+        "vertx-proton"                : ["vertx-unit"],
+        "vertx-amqp-bridge"           : ["vertx-proton"],
+        "vertx-camel-bridge"          : ["vertx-unit"],
+
+        // Data
+        "vertx-embedded-mongo-db"     : ["vertx-service-factory"],
         "vertx-sql-common"            : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-bridge-common"         : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-mongo-client"          : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-jdbc-client"           : ["vertx-sql-common"],
+
+        // Security
         "vertx-auth"                  : ["vertx-jdbc-client", "vertx-mongo-client"],
+
+        // Web
         "vertx-web"                   : ["vertx-auth", "vertx-bridge-common", "vertx-unit"],
+
+        // Shell
+        "vertx-shell"                 : ["vertx-unit", "vertx-auth", "vertx-web"],
+
+        // Metrics
+        "vertx-dropwizard-metrics"    : ["vertx-shell", "vertx-service-factory"],
+        "vertx-micrometer-metrics"    : ["vertx-unit", "vertx-web"]
     ],
     "master": [
         "vertx-codegen"      : [],
