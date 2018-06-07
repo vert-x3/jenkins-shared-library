@@ -23,6 +23,12 @@ Map<String, List<String>> dependencyGraph = [
         // Vert.x Unit
         "vertx-unit"                  : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
 
+        // Clustering
+        "vertx-hazelcast"             : ["vertx-core", "vertx-web"],
+        "vertx-infinispan"            : ["vertx-core", "vertx-web"],
+        "vertx-zookeeper"             : ["vertx-core", "vertx-web"],
+        "vertx-ignite"                : ["vertx-core", "vertx-web"],
+
         // Messaging
         "vertx-proton"                : ["vertx-unit"],
         "vertx-amqp-bridge"           : ["vertx-proton"],
