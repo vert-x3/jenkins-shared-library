@@ -84,7 +84,20 @@ Map<String, List<String>> dependencyGraph = [
 
         // Metrics
         "vertx-dropwizard-metrics"      : ["vertx-shell", "vertx-service-factory"],
-        "vertx-micrometer-metrics"      : ["vertx-unit", "vertx-web"]
+        "vertx-micrometer-metrics"      : ["vertx-unit", "vertx-web"],
+
+        // Stack
+        "vertx-stack"                   : ["vertx-core",
+                                           "vertx-auth",
+                                           "vertx-web",
+                                           "vertx-shell",
+                                           "vertx-config",
+                                           "vertx-service-discovery",
+                                           "vertx-grpc",
+                                           "vertx-dropwizard-metrics",
+                                           "vertx-micrometer-metrics",
+                                           "vertx-mail-client",
+                                           "vertx-jdbc-client"]
     ],
     "master": [
         "vertx-codegen"      : [],
@@ -134,7 +147,7 @@ def test() {
     }
 }
 
-test()
+//test()
 
 def call() {
 
