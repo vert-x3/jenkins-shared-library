@@ -19,6 +19,7 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-service-factory"       : ["vertx-core"],
         "vertx-maven-service-factory" : ["vertx-service-factory"],
         "vertx-http-service-factory"  : ["vertx-service-factory"],
+        "vertx-service-proxy"         : ["vertx-core", "vertx-auth"],
 
         // Vert.x Unit
         "vertx-unit"                  : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
@@ -49,7 +50,7 @@ Map<String, List<String>> dependencyGraph = [
 
         // Microservices
         "vertx-circuit-breaker"       : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
-        "vertx-service-discovery"     : ["vertx-hazelcast", "vertx-web", "vertx-jdbc-client", "vertx-redis-client", "vertx-mongo-client", "vertx-consul-client"],
+        "vertx-service-discovery"     : ["vertx-hazelcast", "vertx-web", "vertx-jdbc-client", "vertx-redis-client", "vertx-mongo-client", "vertx-consul-client", "vertx-service-proxy"],
         "vertx-health-check"          : ["vertx-web", "vertx-auth", "vertx-service-discovery", "vertx-unit"],
 
         // Web
