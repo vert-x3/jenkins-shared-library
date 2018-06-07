@@ -6,8 +6,10 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-codegen"               : [],
         "vertx-core"                  : ["vertx-codegen"],
 
-        // Rx
-        "vertx-rx"   : ["vertx-core"],
+        // Programming
+        "vertx-rx"                    : ["vertx-core"],
+        "vertx-reactive-streams"      : ["vertx-core"],
+        "vertx-sync"                  : ["vertx-core"],
 
         // Langs
         "vertx-lang-groovy"           : ["vertx-core"],
@@ -46,10 +48,13 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-mqtt"                  : ["vertx-unit"],
         "vertx-rabbitmq-client"       : ["vertx-unit"],
 
+        // Bridge
+        "vertx-bridge-common"         : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-tcp-eventbus-bridge"   : ["vertx-core", "vertx-bridge-common"],
+
         // Data
         "vertx-embedded-mongo-db"     : ["vertx-service-factory"],
         "vertx-sql-common"            : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
-        "vertx-bridge-common"         : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-mongo-client"          : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-redis-client"          : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-jdbc-client"           : ["vertx-sql-common"],
