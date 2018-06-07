@@ -15,17 +15,18 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-lang-ruby"             : ["vertx-core"],
         "vertx-lang-kotlin"           : ["vertx-core", "vertx-rx"],
 
-        // Service
+        // Service factory
         "vertx-service-factory"       : ["vertx-core"],
         "vertx-maven-service-factory" : ["vertx-service-factory"],
         "vertx-http-service-factory"  : ["vertx-service-factory"],
 
-        //
+        // Services
         "vertx-service-proxy"         : ["vertx-core", "vertx-auth"],
         "vertx-grpc"                  : ["vertx-core"],
 
-        // Vert.x Unit
+        // Testing
         "vertx-unit"                  : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-junit5"                : ["vertx-core"],
 
         // Clustering
         "vertx-hazelcast"             : ["vertx-core", "vertx-web"],
