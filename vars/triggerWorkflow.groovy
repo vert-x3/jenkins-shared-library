@@ -34,10 +34,16 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-sql-common"            : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-bridge-common"         : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-mongo-client"          : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-redis-client"          : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
         "vertx-jdbc-client"           : ["vertx-sql-common"],
+        "vertx-consul-client"         : ["vertx-unit", "vertx-web"],
 
         // Security
         "vertx-auth"                  : ["vertx-jdbc-client", "vertx-mongo-client"],
+
+        // Microservices
+        "vertx-circuit-breaker"       : ["vertx-rx", "vertx-lang-groovy", "vertx-lang-js", "vertx-lang-ruby", "vertx-lang-kotlin"],
+        "vertx-health-check"          : ["vertx-web", "vertx-auth", "vertx-unit"],
 
         // Web
         "vertx-web"                   : ["vertx-auth", "vertx-bridge-common", "vertx-unit"],
