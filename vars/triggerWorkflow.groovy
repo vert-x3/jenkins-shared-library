@@ -16,6 +16,8 @@ Map<String, List<String>> dependencyGraph = [
         "vertx-lang-js"                 : ["vertx-core"],
         "vertx-lang-ruby"               : ["vertx-core"],
         "vertx-lang-kotlin"             : ["vertx-core", "vertx-rx"],
+        "vertx-lang-scala"              : ["vertx-core"],
+        "vertx-lang-ceylon"             : ["vertx-core"],
 
         // Service factory
         "vertx-service-factory"         : ["vertx-core"],
