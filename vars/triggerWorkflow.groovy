@@ -100,15 +100,6 @@ Map<String, List<String>> dependencyGraph = [
                                            "vertx-jdbc-client"]
     ],
     "master": [
-        "vertx-codegen"      : [],
-        "vertx-core"         : [ "vertx-codegen" ],
-        "vertx-unit"         : ["vertx-core"],
-        "vertx-sql-common"   : ["vertx-core"],
-        "vertx-jdbc-client"  : ["vertx-sql-common"],
-        "vertx-auth"         : ["vertx-core", "vertx-jdbc-client", "vertx-mongo-client"],
-        "vertx-mongo-client" : ["vertx-core"],
-        "vertx-bridge-common": ["vertx-core"],
-        "vertx-web"          : ["vertx-core", "vertx-auth", "vertx-bridge-common", "vertx-unit"],
     ]
 ]
 
